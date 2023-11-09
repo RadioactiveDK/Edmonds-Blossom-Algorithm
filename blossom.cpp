@@ -82,7 +82,7 @@ int find_augmenting_path( vector<vector<int>> &adj, int source){
   return -1;
 }
 
-void invert_path(int s, int u){
+void invert_path( int u){
   while (u != -1) {
     int w = match[parent[u]];
     match[u] = parent[u];
@@ -93,7 +93,7 @@ void invert_path(int s, int u){
 
 void edmonds(vector<vector<int>> &adj){
   for (int r = 0; r < adj.size(); r++)
-    if (match[r] == -1) invert_path(r, find_augmenting_path(adj, r));
+    if (match[r] == -1) invert_path(find_augmenting_path(adj, r));
 
   cout<<"Maximum Matching: "<<endl;
 
